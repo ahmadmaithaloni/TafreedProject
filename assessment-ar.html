@@ -26,11 +26,6 @@
             color: var(--color-primary-dark);
             margin-bottom: 10px;
         }
-        .page-header h2 {
-            font-size: 1.4rem;
-            color: var(--color-text-light);
-            font-family: var(--font-english);
-        }
 
         .assessment-container {
             max-width: 900px;
@@ -59,8 +54,8 @@
         .question-block {
             margin-bottom: 30px;
             background: var(--color-bg);
-            padding: 20px;
-            border-radius: 8px;
+            padding: 25px;
+            border-radius: 12px;
             border-right: 4px solid var(--color-primary);
         }
         [dir="ltr"] .question-block {
@@ -68,18 +63,12 @@
             border-left: 4px solid var(--color-primary);
         }
 
-        .q-text-ar {
-            font-weight: 600;
-            font-size: 1.15rem;
-            margin-bottom: 5px;
-            color: var(--color-text);
-        }
-
-        .q-text-en {
-            font-family: var(--font-english);
-            color: var(--color-text-light);
-            font-size: 1rem;
+        .q-text {
+            font-weight: 700;
+            font-size: 1.25rem;
             margin-bottom: 15px;
+            color: var(--color-primary-dark);
+            line-height: 1.6;
         }
 
         .likert-scale {
@@ -89,8 +78,9 @@
             gap: 10px;
             background: var(--color-white);
             padding: 15px;
-            border-radius: 6px;
+            border-radius: 8px;
             border: 1px solid var(--color-gray);
+            flex-wrap: wrap;
         }
 
         .likert-option {
@@ -99,13 +89,14 @@
             align-items: center;
             text-align: center;
             cursor: pointer;
+            flex: 1;
         }
 
         .likert-option input {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             accent-color: var(--color-primary);
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
         }
 
         .mcq-options {
@@ -116,12 +107,12 @@
 
         .mcq-option {
             background: var(--color-white);
-            padding: 10px 15px;
-            border-radius: 6px;
+            padding: 12px 15px;
+            border-radius: 8px;
             border: 1px solid var(--color-gray);
             cursor: pointer;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 10px;
             transition: var(--transition);
         }
@@ -131,13 +122,13 @@
         }
 
         .mcq-option input {
-            margin-top: 5px;
             accent-color: var(--color-primary);
+            width: 18px;
+            height: 18px;
         }
 
         .mcq-text {
-            display: flex;
-            flex-direction: column;
+            font-size: 1.05rem;
         }
 
         .form-group {
@@ -211,7 +202,7 @@
         }
         
         #certificateTemplate {
-            width: 800px; /* Fixed width for PDF */
+            width: 800px;
             height: 600px;
             padding: 40px;
             background: radial-gradient(circle, #ffffff 0%, #f9f5f9 100%);
@@ -243,12 +234,6 @@
         .cert-title-ar {
             font-size: 2.5rem;
             color: var(--color-primary-dark);
-            margin-bottom: 5px;
-        }
-        .cert-title-en {
-            font-size: 1.2rem;
-            color: #666;
-            font-family: var(--font-english);
             margin-bottom: 30px;
         }
 
@@ -256,14 +241,6 @@
             font-size: 1.4rem;
             line-height: 1.8;
             margin-bottom: 20px;
-        }
-        .cert-body-en {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            font-family: var(--font-english);
-            color: #444;
-            margin-bottom: 40px;
-            direction: ltr;
         }
 
         .cert-footer {
@@ -287,6 +264,39 @@
             font-weight: 600;
         }
 
+        /* Responsive Overrides */
+        @media (max-width: 768px) {
+            .assessment-container {
+                padding: 20px;
+                margin: 20px 15px;
+            }
+            .q-text {
+                font-size: 1.15rem;
+            }
+            .likert-scale {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .likert-option {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 10px 0;
+                border-bottom: 1px dashed var(--color-gray);
+            }
+            .likert-option:last-child {
+                border-bottom: none;
+            }
+            .likert-option input {
+                margin-bottom: 0;
+            }
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            .score-display {
+                flex-direction: column;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -294,22 +304,25 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo">تفريد | Tafreed</a>
+            <a href="index-ar.html" class="logo">تفريد</a>
             <ul class="nav-links">
-                <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="ib.html">البكالوريا الدولية</a></li>
-                <li><a href="story.html">التعلم بالقصة</a></li>
-                <li><a href="classroom.html">الإدارة الصفية</a></li>
-                <li><a href="assessment.html" class="btn btn-outline" style="background:var(--color-primary); color:white!important;">الاستبيان</a></li>
+                <li><a href="index-ar.html">الرئيسية</a></li>
+                <li><a href="ib-ar.html">البكالوريا الدولية</a></li>
+                <li><a href="story-ar.html">التعلم بالقصة</a></li>
+                <li><a href="classroom-ar.html">الإدارة الصفية</a></li>
+                <li><a href="assessment-ar.html" class="btn btn-outline" style="background:var(--color-primary); color:white!important;">الاستبيان</a></li>
+                <li><a href="assessment-en.html" class="lang-btn" style="text-decoration:none; padding: 5px 10px; display:inline-block;">EN</a></li>
             </ul>
+            <div class="burger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </nav>
 
     <!-- Header -->
     <header class="page-header">
         <div class="container">
-            <h1>استبيان تقييم كفايات المعلم – منصة تفريد</h1>
-            <h2>Teacher Competency Self-Assessment – Tafreed Platform</h2>
+            <h1 data-i18n="assess_page_title">استبيان تقييم كفايات المعلم – منصة تفريد</h1>
         </div>
     </header>
 
@@ -321,58 +334,55 @@
                 <!-- Personal Info -->
                 <div class="form-section">
                     <div class="form-group">
-                        <label>اسم المعلم / Teacher Name <span style="color:red">*</span></label>
-                        <input type="text" id="teacherName" required placeholder="أدخل اسمك الثلاثي لطباعته على الشهادة">
+                        <label data-i18n="assess_teacher_name">اسم المعلم <span style='color:red'>*</span></label>
+                        <input type="text" id="teacherName" required data-i18n="assess_name_placeholder" placeholder="أدخل اسمك الثلاثي لطباعته على الشهادة">
                     </div>
                 </div>
 
                 <!-- Section 1: IB PYP -->
                 <div class="form-section">
-                    <h3 class="section-title"><i class="fas fa-globe"></i> القسم الأول: فهم البكالوريا الدولية (IB/PYP)</h3>
+                    <h3 class="section-title"><i class="fas fa-globe"></i> <span>القسم الأول: فهم البكالوريا الدولية</span></h3>
                     
                     <div class="question-block">
-                        <div class="q-text-ar">1. إلى أي مدى تشعر أنك تفهم فلسفة برنامج السنوات الابتدائية PYP وأهدافه الرئيسية؟</div>
-                        <div class="q-text-en">To what extent do you feel you understand the philosophy and main goals of the PYP?</div>
+                        <div class="q-text">1. إلى أي مدى تشعر أنك تفهم فلسفة برنامج السنوات الابتدائية وأهدافه الرئيسية؟</div>
                         <div class="likert-scale">
-                            <label class="likert-option"><input type="radio" name="ib_q1" value="1" required>1<br><small>أبداً<br>Never</small></label>
-                            <label class="likert-option"><input type="radio" name="ib_q1" value="2">2</label>
-                            <label class="likert-option"><input type="radio" name="ib_q1" value="3">3</label>
-                            <label class="likert-option"><input type="radio" name="ib_q1" value="4">4</label>
-                            <label class="likert-option"><input type="radio" name="ib_q1" value="5">5<br><small>دائماً<br>Always</small></label>
+                            <label class="likert-option"><input type="radio" name="ib_q1" value="1" required><span>1 - <small data-i18n="likert_never">أبداً</small></span></label>
+                            <label class="likert-option"><input type="radio" name="ib_q1" value="2"><span>2</span></label>
+                            <label class="likert-option"><input type="radio" name="ib_q1" value="3"><span>3</span></label>
+                            <label class="likert-option"><input type="radio" name="ib_q1" value="4"><span>4</span></label>
+                            <label class="likert-option"><input type="radio" name="ib_q1" value="5"><span>5 - <small data-i18n="likert_always">دائماً</small></span></label>
                         </div>
                     </div>
 
                     <div class="question-block">
-                        <div class="q-text-ar">2. عند تخطيط وحداتك، إلى أي مدى تعتمد على التعلم القائم على الاستقصاء كنموذج رئيسي؟</div>
-                        <div class="q-text-en">When planning your units, how often do you use inquiry-based learning as a main approach?</div>
+                        <div class="q-text" data-i18n="assess_ib_q2">2. عند تخطيط وحداتك، إلى أي مدى تعتمد على التعلم القائم على الاستقصاء كنموذج رئيسي؟</div>
                         <div class="likert-scale">
-                            <label class="likert-option"><input type="radio" name="ib_q2" value="1" required>1</label>
-                            <label class="likert-option"><input type="radio" name="ib_q2" value="2">2</label>
-                            <label class="likert-option"><input type="radio" name="ib_q2" value="3">3</label>
-                            <label class="likert-option"><input type="radio" name="ib_q2" value="4">4</label>
-                            <label class="likert-option"><input type="radio" name="ib_q2" value="5">5</label>
+                            <label class="likert-option"><input type="radio" name="ib_q2" value="1" required><span>1 - <small data-i18n="likert_never">أبداً</small></span></label>
+                            <label class="likert-option"><input type="radio" name="ib_q2" value="2"><span>2</span></label>
+                            <label class="likert-option"><input type="radio" name="ib_q2" value="3"><span>3</span></label>
+                            <label class="likert-option"><input type="radio" name="ib_q2" value="4"><span>4</span></label>
+                            <label class="likert-option"><input type="radio" name="ib_q2" value="5"><span>5 - <small data-i18n="likert_always">دائماً</small></span></label>
                         </div>
                     </div>
 
                     <div class="question-block">
-                        <div class="q-text-ar">3. أي من العبارات التالية تصف دور المعلم في صفوف PYP بشكل أدق؟</div>
-                        <div class="q-text-en">Which of the following best describes the teacher's role in a PYP classroom?</div>
+                        <div class="q-text">3. أي من العبارات التالية تصف دور المعلم في صفوف البكالوريا بشكل أدق؟</div>
                         <div class="mcq-options">
                             <label class="mcq-option">
                                 <input type="radio" name="ib_q3" value="wrong" required>
-                                <div class="mcq-text"><span>أ) ناقل للمحتوى فقط</span><span style="font-size:0.9rem; color:#666; font-family:Roboto">A) Sole content deliverer</span></div>
+                                <div class="mcq-text" data-i18n="assess_ib_q3_a">أ) ناقل للمحتوى فقط</div>
                             </label>
                             <label class="mcq-option">
                                 <input type="radio" name="ib_q3" value="correct">
-                                <div class="mcq-text"><span>ب) ميسّر وداعم لأسئلة واستقصاءات الطلبة</span><span style="font-size:0.9rem; color:#666; font-family:Roboto">B) Facilitator who supports students' questions and inquiries</span></div>
+                                <div class="mcq-text" data-i18n="assess_ib_q3_b">ب) ميسّر وداعم لأسئلة واستقصاءات الطلبة</div>
                             </label>
                             <label class="mcq-option">
                                 <input type="radio" name="ib_q3" value="wrong">
-                                <div class="mcq-text"><span>ج) مراقب للسلوك فقط</span><span style="font-size:0.9rem; color:#666; font-family:Roboto">C) Behavior monitor</span></div>
+                                <div class="mcq-text" data-i18n="assess_ib_q3_c">ج) مراقب للسلوك فقط</div>
                             </label>
                             <label class="mcq-option">
                                 <input type="radio" name="ib_q3" value="wrong">
-                                <div class="mcq-text"><span>د) مصحّح للواجبات فقط</span><span style="font-size:0.9rem; color:#666; font-family:Roboto">D) Only homework corrector</span></div>
+                                <div class="mcq-text" data-i18n="assess_ib_q3_d">د) مصحّح للواجبات فقط</div>
                             </label>
                         </div>
                     </div>
@@ -380,51 +390,48 @@
 
                 <!-- Section 2: Story-based Learning -->
                 <div class="form-section">
-                    <h3 class="section-title"><i class="fas fa-book-open"></i> القسم الثاني: التعلم من خلال القصة</h3>
+                    <h3 class="section-title"><i class="fas fa-book-open"></i> <span data-i18n="assess_sec2_title">القسم الثاني: التعلم من خلال القصة</span></h3>
                     
                     <div class="question-block">
-                        <div class="q-text-ar">4. كم مرة تستخدم قصة (نص قصصي أو أدبي) كنقطة انطلاق لدرس في أي مادة خلال الشهر؟</div>
-                        <div class="q-text-en">How often do you use a story as a starting point for a lesson in any subject during a month?</div>
+                        <div class="q-text" data-i18n="assess_story_q1">4. كم مرة تستخدم قصة (نص قصصي أو أدبي) كنقطة انطلاق لدرس في أي مادة خلال الشهر؟</div>
                         <div class="likert-scale">
-                            <label class="likert-option"><input type="radio" name="story_q1" value="1" required>1</label>
-                            <label class="likert-option"><input type="radio" name="story_q1" value="2">2</label>
-                            <label class="likert-option"><input type="radio" name="story_q1" value="3">3</label>
-                            <label class="likert-option"><input type="radio" name="story_q1" value="4">4</label>
-                            <label class="likert-option"><input type="radio" name="story_q1" value="5">5</label>
+                            <label class="likert-option"><input type="radio" name="story_q1" value="1" required><span>1 - <small data-i18n="likert_never">أبداً</small></span></label>
+                            <label class="likert-option"><input type="radio" name="story_q1" value="2"><span>2</span></label>
+                            <label class="likert-option"><input type="radio" name="story_q1" value="3"><span>3</span></label>
+                            <label class="likert-option"><input type="radio" name="story_q1" value="4"><span>4</span></label>
+                            <label class="likert-option"><input type="radio" name="story_q1" value="5"><span>5 - <small data-i18n="likert_always">دائماً</small></span></label>
                         </div>
                     </div>
 
                     <div class="question-block">
-                        <div class="q-text-ar">5. عندما تقرأ قصة مع طلابك، إلى أي مدى تخطط لأسئلة "قبل، أثناء، وبعد القراءة" بشكل واضح؟</div>
-                        <div class="q-text-en">When reading a story with your students, how often do you intentionally plan 'before, during, and after reading' questions?</div>
+                        <div class="q-text" data-i18n="assess_story_q2">5. عندما تقرأ قصة مع طلابك، إلى أي مدى تخطط لأسئلة "قبل، أثناء، وبعد القراءة" بشكل واضح؟</div>
                         <div class="likert-scale">
-                            <label class="likert-option"><input type="radio" name="story_q2" value="1" required>1</label>
-                            <label class="likert-option"><input type="radio" name="story_q2" value="2">2</label>
-                            <label class="likert-option"><input type="radio" name="story_q2" value="3">3</label>
-                            <label class="likert-option"><input type="radio" name="story_q2" value="4">4</label>
-                            <label class="likert-option"><input type="radio" name="story_q2" value="5">5</label>
+                            <label class="likert-option"><input type="radio" name="story_q2" value="1" required><span>1 - <small data-i18n="likert_never">أبداً</small></span></label>
+                            <label class="likert-option"><input type="radio" name="story_q2" value="2"><span>2</span></label>
+                            <label class="likert-option"><input type="radio" name="story_q2" value="3"><span>3</span></label>
+                            <label class="likert-option"><input type="radio" name="story_q2" value="4"><span>4</span></label>
+                            <label class="likert-option"><input type="radio" name="story_q2" value="5"><span>5 - <small data-i18n="likert_always">دائماً</small></span></label>
                         </div>
                     </div>
 
                     <div class="question-block">
-                        <div class="q-text-ar">6. التعلّم من خلال القصة يساعد الطلبة بشكل أساسي على:</div>
-                        <div class="q-text-en">Learning through story mainly helps students to:</div>
+                        <div class="q-text" data-i18n="assess_story_q3">6. التعلّم من خلال القصة يساعد الطلبة بشكل أساسي على:</div>
                         <div class="mcq-options">
                             <label class="mcq-option">
                                 <input type="radio" name="story_q3" value="wrong" required>
-                                <div class="mcq-text"><span>أ) حفظ أكبر قدر من النص</span><span style="font-size:0.9rem; color:#666; font-family:Roboto">A) Memorize as much of the text as possible</span></div>
+                                <div class="mcq-text" data-i18n="assess_story_q3_a">أ) حفظ أكبر قدر من النص</div>
                             </label>
                             <label class="mcq-option">
                                 <input type="radio" name="story_q3" value="correct">
-                                <div class="mcq-text"><span>ب) بناء الفهم، اللغة، والقيم من خلال سياق غني</span><span style="font-size:0.9rem; color:#666; font-family:Roboto">B) Build understanding, language, and values through a rich context</span></div>
+                                <div class="mcq-text" data-i18n="assess_story_q3_b">ب) بناء الفهم، اللغة، والقيم من خلال سياق غني</div>
                             </label>
                             <label class="mcq-option">
                                 <input type="radio" name="story_q3" value="wrong">
-                                <div class="mcq-text"><span>ج) ملء وقت الحصة</span><span style="font-size:0.9rem; color:#666; font-family:Roboto">C) Fill lesson time</span></div>
+                                <div class="mcq-text" data-i18n="assess_story_q3_c">ج) ملء وقت الحصة</div>
                             </label>
                             <label class="mcq-option">
                                 <input type="radio" name="story_q3" value="wrong">
-                                <div class="mcq-text"><span>د) التدريب على القراءة الجهرية فقط</span><span style="font-size:0.9rem; color:#666; font-family:Roboto">D) Practice only loud reading</span></div>
+                                <div class="mcq-text" data-i18n="assess_story_q3_d">د) التدريب على القراءة الجهرية فقط</div>
                             </label>
                         </div>
                     </div>
@@ -432,88 +439,85 @@
 
                 <!-- Section 3: Classroom Management -->
                 <div class="form-section">
-                    <h3 class="section-title"><i class="fas fa-users-cog"></i> القسم الثالث: الإدارة الصفية الإيجابية</h3>
+                    <h3 class="section-title"><i class="fas fa-users-cog"></i> <span data-i18n="assess_sec3_title">القسم الثالث: الإدارة الصفية الإيجابية</span></h3>
                     
                     <div class="question-block">
-                        <div class="q-text-ar">7. إلى أي مدى تشعر أن لديك خطة واضحة للإدارة الصفية (قواعد، روتين، تعزيز، استجابة)؟</div>
-                        <div class="q-text-en">To what extent do you feel you have a clear classroom management plan?</div>
+                        <div class="q-text" data-i18n="assess_class_q1">7. إلى أي مدى تشعر أن لديك خطة واضحة للإدارة الصفية (قواعد، روتين، تعزيز، استجابة)؟</div>
                         <div class="likert-scale">
-                            <label class="likert-option"><input type="radio" name="class_q1" value="1" required>1</label>
-                            <label class="likert-option"><input type="radio" name="class_q1" value="2">2</label>
-                            <label class="likert-option"><input type="radio" name="class_q1" value="3">3</label>
-                            <label class="likert-option"><input type="radio" name="class_q1" value="4">4</label>
-                            <label class="likert-option"><input type="radio" name="class_q1" value="5">5</label>
+                            <label class="likert-option"><input type="radio" name="class_q1" value="1" required><span>1 - <small data-i18n="likert_never">أبداً</small></span></label>
+                            <label class="likert-option"><input type="radio" name="class_q1" value="2"><span>2</span></label>
+                            <label class="likert-option"><input type="radio" name="class_q1" value="3"><span>3</span></label>
+                            <label class="likert-option"><input type="radio" name="class_q1" value="4"><span>4</span></label>
+                            <label class="likert-option"><input type="radio" name="class_q1" value="5"><span>5 - <small data-i18n="likert_always">دائماً</small></span></label>
                         </div>
                     </div>
 
                     <div class="question-block">
-                        <div class="q-text-ar">8. عندما يظهر سلوك غير مناسب، كم مرة تبدأ بتذكير إيجابي بالقواعد قبل الانتقال لإجراءات أخرى؟</div>
-                        <div class="q-text-en">When inappropriate behavior occurs, how often do you start with a positive reminder before moving to other steps?</div>
+                        <div class="q-text" data-i18n="assess_class_q2">8. عندما يظهر سلوك غير مناسب، كم مرة تبدأ بتذكير إيجابي بالقواعد قبل الانتقال لإجراءات أخرى؟</div>
                         <div class="likert-scale">
-                            <label class="likert-option"><input type="radio" name="class_q2" value="1" required>1</label>
-                            <label class="likert-option"><input type="radio" name="class_q2" value="2">2</label>
-                            <label class="likert-option"><input type="radio" name="class_q2" value="3">3</label>
-                            <label class="likert-option"><input type="radio" name="class_q2" value="4">4</label>
-                            <label class="likert-option"><input type="radio" name="class_q2" value="5">5</label>
+                            <label class="likert-option"><input type="radio" name="class_q2" value="1" required><span>1 - <small data-i18n="likert_never">أبداً</small></span></label>
+                            <label class="likert-option"><input type="radio" name="class_q2" value="2"><span>2</span></label>
+                            <label class="likert-option"><input type="radio" name="class_q2" value="3"><span>3</span></label>
+                            <label class="likert-option"><input type="radio" name="class_q2" value="4"><span>4</span></label>
+                            <label class="likert-option"><input type="radio" name="class_q2" value="5"><span>5 - <small data-i18n="likert_always">دائماً</small></span></label>
                         </div>
                     </div>
 
                     <div class="question-block">
-                        <div class="q-text-ar">9. أي ممارسة من التالية أقرب للإدارة الصفية الإيجابية؟</div>
-                        <div class="q-text-en">Which of the following is closest to positive classroom management?</div>
+                        <div class="q-text" data-i18n="assess_class_q3">9. أي ممارسة من التالية أقرب للإدارة الصفية الإيجابية؟</div>
                         <div class="mcq-options">
                             <label class="mcq-option">
                                 <input type="radio" name="class_q3" value="wrong" required>
-                                <div class="mcq-text"><span>أ) رفع الصوت لإسكات الطلبة</span><span style="font-size:0.9rem; color:#666; font-family:Roboto">A) Raising voice to silence students</span></div>
+                                <div class="mcq-text" data-i18n="assess_class_q3_a">أ) رفع الصوت لإسكات الطلبة</div>
                             </label>
                             <label class="mcq-option">
                                 <input type="radio" name="class_q3" value="correct">
-                                <div class="mcq-text"><span>ب) الاتفاق مسبقًا على قواعد بأسلوب إيجابي ومراجعتها</span><span style="font-size:0.9rem; color:#666; font-family:Roboto">B) Co-creating positively worded class rules and revisiting them</span></div>
+                                <div class="mcq-text" data-i18n="assess_class_q3_b">ب) الاتفاق مسبقًا على قواعد بأسلوب إيجابي ومراجعتها</div>
                             </label>
                             <label class="mcq-option">
                                 <input type="radio" name="class_q3" value="wrong">
-                                <div class="mcq-text"><span>ج) إرسال الطالب مباشرة للإدارة</span><span style="font-size:0.9rem; color:#666; font-family:Roboto">C) Sending the student immediately to the office</span></div>
+                                <div class="mcq-text" data-i18n="assess_class_q3_c">ج) إرسال الطالب مباشرة للإدارة</div>
                             </label>
                             <label class="mcq-option">
                                 <input type="radio" name="class_q3" value="wrong">
-                                <div class="mcq-text"><span>د) تجاهل جميع السلوكيات</span><span style="font-size:0.9rem; color:#666; font-family:Roboto">D) Ignoring all behaviors</span></div>
+                                <div class="mcq-text" data-i18n="assess_class_q3_d">د) تجاهل جميع السلوكيات</div>
                             </label>
                         </div>
                     </div>
                 </div>
 
                 <div style="text-align: center; margin-top: 30px;">
-                    <button type="submit" class="btn btn-primary" style="font-size: 1.3rem; padding: 15px 40px;">إعتماد وتسليم الإجابات / Submit</button>
+                    <button type="submit" class="btn btn-primary" style="font-size: 1.3rem; padding: 15px 40px;" data-i18n="assess_btn_submit">إعتماد وتسليم الإجابات</button>
                 </div>
             </form>
 
             <!-- Results Output -->
             <div id="resultBox">
-                <h3>نتائج التقييم / Assessment Results</h3>
+                <h3 data-i18n="assess_results_title">نتائج التقييم</h3>
                 <p id="resultMsg" style="margin-bottom: 20px;"></p>
                 
                 <div class="total-score">
-                    النتيجة النهائية: <span id="finalScoreVal">0</span>%
+                    <span data-i18n="assess_final_score">النتيجة النهائية:</span> <span id="finalScoreVal">0</span>%
                 </div>
 
                 <div class="score-display">
                     <div class="score-item">
-                        <h4>IB/PYP</h4>
-                        <div class="grade" id="score_ib">0% - مبتدئ</div>
+                        <h4>البكالوريا الدولية</h4>
+                        <div class="grade" id="score_ib">0%</div>
                     </div>
                     <div class="score-item">
-                        <h4>التعلم بالقصة</h4>
-                        <div class="grade" id="score_story">0% - مبتدئ</div>
+                        <h4 data-i18n="nav_story">التعلم بالقصة</h4>
+                        <div class="grade" id="score_story">0%</div>
                     </div>
                     <div class="score-item">
-                        <h4>الإدارة الصفية</h4>
-                        <div class="grade" id="score_class">0% - مبتدئ</div>
+                        <h4 data-i18n="nav_classroom">الإدارة الصفية</h4>
+                        <div class="grade" id="score_class">0%</div>
                     </div>
                 </div>
 
                 <div class="cert-btn-container" id="certBtnContainer" style="display: none;">
-                    <p style="color:var(--color-primary-dark); font-weight:bold; margin-bottom: 15px;">تهانينا! لقد اجتزت التقييم بتفوق. يمكنك الآن تحميل شهادتك.</p>
-                    <button id="downloadCertBtn" class="btn btn-secondary" style="font-size: 1.2rem; background: var(--color-primary); color: white;"><i class="fas fa-file-pdf"></i> تحميل الشهادة (Download Certificate)</button>
+                    <p style="color:var(--color-primary-dark); font-weight:bold; margin-bottom: 15px;" data-i18n="assess_cert_msg">تهانينا! لقد اجتزت التقييم بتفوق. يمكنك الآن تحميل شهادتك.</p>
+                    <button id="downloadCertBtn" class="btn btn-secondary" style="font-size: 1.2rem; background: var(--color-primary); color: white;"><i class="fas fa-file-pdf"></i> <span data-i18n="assess_btn_download">تحميل الشهادة</span></button>
                 </div>
             </div>
         </div>
@@ -522,34 +526,30 @@
     <!-- Hidden Certificate Template -->
     <div id="certWrapper">
         <div id="certificateTemplate">
-            <div class="cert-logo">تفريد | Tafreed</div>
-            <div class="cert-title-ar">شهادة تميّز في الكفايات التربوية</div>
-            <div class="cert-title-en">Certificate of Excellence in Teaching Competencies</div>
+            <div class="cert-logo">تفريد</div>
+            <div class="cert-title-ar" data-i18n="assess_cert_title">شهادة تميّز في الكفايات التربوية</div>
             
             <div class="cert-body-ar">
-                تشهد منصة تفريد للتطوير المهني بأن الأستاذ/ة<br>
+                <span data-i18n="assess_cert_body_1">تشهد منصة تفريد للتطوير المهني بأن الأستاذ/ة</span><br>
                 <strong style="color:var(--color-primary-dark); font-size: 2rem; display:block; margin: 15px 0;" id="certNameAr"></strong>
-                قد أتمّ/ت استبيان تقييم كفايات المعلم، وحقق/ت مستوى عالياً في فهم البكالوريا الدولية (IB PYP)، والتعلّم من خلال القصة، والإدارة الصفية الإيجابية.
-            </div>
-
-            <div class="cert-body-en">
-                Tafreed Platform certifies that <strong id="certNameEn"></strong> has completed the Teacher Competency Self-Assessment and achieved a high level of proficiency in IB understanding, story-based learning, and positive classroom management.
+                <span>قد أتمّ/ت استبيان تقييم كفايات المعلم، وحقق/ت مستوى عالياً في فهم البكالوريا الدولية، والتعلّم من خلال القصة، والإدارة الصفية الإيجابية.</span>
             </div>
 
             <div class="cert-footer">
                 <div class="signature-box" style="text-align: right;">
-                    <div style="font-weight:bold;">Project "Tafreed"</div>
-                    <div>For Teacher Professional Development</div>
+                    <div style="font-weight:bold;" data-i18n="assess_cert_footer_project">مشروع 'تفريد'</div>
+                    <div data-i18n="assess_cert_footer_desc">للتطوير المهني للمعلمين</div>
                 </div>
                 <div class="signature-box">
                     <div class="signature-line" id="certDate"></div>
-                    <div class="signature-text">تاريخ الإصدار / Date</div>
+                    <div class="signature-text" data-i18n="assess_cert_date">تاريخ الإصدار</div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Scripts -->
+    <script src="script.js"></script>
     <script>
         document.getElementById('assessmentForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -557,11 +557,6 @@
             const formData = new FormData(e.target);
             const tName = formData.get('teacherName');
 
-            // Scoring Logic per Section: Max 100 points
-            // Likert: 1->0, 2->25, 3->50, 4->75, 5->100
-            // MCQ Correct: 100
-            // Section Score = (Likert1 + Likert2 + MCQ) / 3
-            
             function convertLikert(val) {
                 return (parseInt(val) - 1) * 25; 
             }
@@ -588,9 +583,9 @@
             const averageScore = Math.round((scoreIB + scoreStory + scoreClassroom) / 3);
 
             function getLevel(score) {
-                if(score < 50) return "مبتدئ / Beginner";
-                if(score < 80) return "متوسط / Intermediate";
-                return "متقدم / Advanced";
+                if(score < 50) return "مبتدئ";
+                if(score < 80) return "متوسط";
+                return "متقدم";
             }
 
             // Display Results
@@ -605,18 +600,18 @@
             const certBtnContainer = document.getElementById('certBtnContainer');
             
             if(averageScore >= 80) {
-                resultMsg.innerHTML = `عمل رائع أستاذ/ة <strong>${tName}</strong>! أداؤك ممتاز وممارساتك تعكس فهماً عميقاً للتعلّم الحديث.`;
+                const msgAr = `عمل رائع أستاذ/ة <strong>${tName}</strong>! أداؤك ممتاز وممارساتك تعكس فهماً عميقاً للتعلّم الحديث.`;
+                resultMsg.innerHTML = msgAr;
                 certBtnContainer.style.display = 'block';
 
-                // Populate certificate templates
                 document.getElementById('certNameAr').textContent = tName;
-                document.getElementById('certNameEn').textContent = tName;
-                
                 const today = new Date();
                 document.getElementById('certDate').textContent = today.toLocaleDateString();
 
             } else {
-                resultMsg.innerHTML = `شكراً لك أستاذ/ة <strong>${tName}</strong>. ننصحك بالبدء في التصفح العميق لقسم '${scoreIB < 50 ? 'البكالوريا الدولية' : (scoreClassroom < 50 ? 'الإدارة الصفية' : 'التعلم بالقصة')}' لرفع كفاياتك لتصل لمستوى التميز. استمر في التطور!`;
+                let sectionNeedsHelp = scoreIB < 50 ? "البكالوريا الدولية" : (scoreClassroom < 50 ? "الإدارة الصفية" : "التعلم بالقصة");
+                const msgAr = `شكراً لك أستاذ/ة <strong>${tName}</strong>. ننصحك بالبدء في التصفح العميق لقسم '${sectionNeedsHelp}' لرفع كفاياتك لتصل لمستوى التميز. استمر في التطور!`;
+                resultMsg.innerHTML = msgAr;
                 certBtnContainer.style.display = 'none';
             }
 
@@ -627,8 +622,6 @@
         // Generate PDF
         document.getElementById('downloadCertBtn').addEventListener('click', function() {
             const certElement = document.getElementById('certificateTemplate');
-            
-            // To ensure styling renders correctly in pdf, we temporally show it but offscreen
             document.getElementById('certWrapper').style.display = 'block';
             document.getElementById('certWrapper').style.position = 'absolute';
             document.getElementById('certWrapper').style.left = '-9999px';
@@ -641,12 +634,15 @@
                 jsPDF:        { unit: 'px', format: [800, 600], orientation: 'landscape' }
             };
 
-            // Generate
             html2pdf().set(opt).from(certElement).save().then(() => {
-                // Re-hide wrapper
                 document.getElementById('certWrapper').style.display = 'none';
             });
         });
+        
+        
+        document.getElementById('certificateTemplate').style.direction = 'rtl';
+        document.getElementById('certificateTemplate').style.fontFamily = 'var(--font-arabic)';
+        
     </script>
 </body>
 </html>

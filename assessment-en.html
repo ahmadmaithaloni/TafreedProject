@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tafreed | Competency Assessment</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- html2pdf Library for Certificate Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        p,
+        a,
+        div,
+        span,
+        li,
+        label,
+        input,
+        button {
+            font-family: var(--font-english);
+        }
+
+        .page-header {
+            background-color: var(--color-primary-light);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--color-primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .assessment-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--color-white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed var(--color-gray);
+        }
+
+        .section-title {
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .question-block {
+            margin-bottom: 30px;
+            background: var(--color-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .q-text {
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            color: var(--color-primary-dark);
+            line-height: 1.6;
+        }
+
+        .likert-scale {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            background: var(--color-white);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--color-gray);
+            flex-wrap: wrap;
+        }
+
+        .likert-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .likert-option input {
+            margin-bottom: 8px;
+            accent-color: var(--color-primary);
+            width: 22px;
+            height: 22px;
+        }
+
+        .mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mcq-option {
+            background: var(--color-white);
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--color-gray);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .mcq-option:hover {
+            background: rgba(200, 162, 200, 0.1);
+        }
+
+        .mcq-option input {
+            accent-color: var(--color-primary);
+            width: 18px;
+            height: 18px;
+        }
+
+        .mcq-text {
+            font-size: 1.05rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-family: inherit;
+        }
+
+        #resultBox {
+            display: none;
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, rgba(255, 255, 255, 1) 100%);
+            border: 2px solid var(--color-primary);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .score-display {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .score-item {
+            background: var(--color-white);
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            min-width: 150px;
+        }
+
+        .score-item h4 {
+            color: var(--color-primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .score-item .grade {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--color-text);
+        }
+
+        .total-score {
+            font-size: 2rem;
+            color: var(--color-primary-dark);
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .cert-btn-container {
+            margin-top: 30px;
+        }
+
+        #certWrapper {
+            display: none;
+        }
+
+        #certificateTemplate {
+            width: 800px;
+            height: 600px;
+            padding: 40px;
+            background: radial-gradient(circle, #ffffff 0%, #f9f5f9 100%);
+            border: 15px solid var(--color-primary);
+            position: relative;
+            text-align: center;
+            font-family: var(--font-english);
+            color: var(--color-text);
+            box-sizing: border-box;
+            direction: ltr;
+        }
+
+        #certificateTemplate::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 2px solid var(--color-primary-dark);
+            pointer-events: none;
+        }
+
+        .cert-logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .cert-title-en {
+            font-size: 2.5rem;
+            color: var(--color-primary-dark);
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .cert-body-en {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .cert-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 40px;
+            margin-top: 50px;
+            text-align: left;
+        }
+
+        .signature-box {
+            text-align: left;
+        }
+
+        .signature-line {
+            width: 200px;
+            border-bottom: 1px solid var(--color-text);
+            margin-bottom: 5px;
+            height: 40px;
+        }
+
+        .signature-text {
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .assessment-container {
+                padding: 20px;
+                margin: 20px 15px;
+            }
+
+            .q-text {
+                font-size: 1.15rem;
+            }
+
+            .likert-scale {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .likert-option {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 10px 0;
+                border-bottom: 1px dashed var(--color-gray);
+            }
+
+            .likert-option:last-child {
+                border-bottom: none;
+            }
+
+            .likert-option input {
+                margin-bottom: 0;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .score-display {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index-en.html" class="logo">Tafreed</a>
+            <ul class="nav-links">
+                <li><a href="index-en.html">Home</a></li>
+                <li><a href="ib-en.html">IB PYP</a></li>
+                <li><a href="story-en.html">Story-based</a></li>
+                <li><a href="classroom-en.html">Classroom Mgmt</a></li>
+                <li><a href="assessment-en.html" class="btn btn-outline"
+                        style="background:var(--color-primary); color:white!important;">Assessment</a></li>
+                <li><a href="assessment-ar.html" class="lang-btn"
+                        style="text-decoration:none; padding: 5px 10px; display:inline-block;">AR</a></li>
+            </ul>
+            <div class="burger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Teacher Competency Self-Assessment – Tafreed Platform</h1>
+        </div>
+    </header>
+
+    <!-- Form Section -->
+    <div class="container">
+        <div class="assessment-container">
+            <form id="assessmentForm">
+
+                <!-- Personal Info -->
+                <div class="form-section">
+                    <div class="form-group">
+                        <label>Teacher Name <span style='color:red'>*</span></label>
+                        <input type="text" id="teacherName" required
+                            placeholder="Enter your full name for the certificate">
+                    </div>
+                </div>
+
+                <!-- Section 1: IB PYP -->
+                <div class="form-section">
+                    <h3 class="section-title"><i class="fas fa-globe"></i> <span>Section 1: Understanding IB PYP</span>
+                    </h3>
+
+                    <div class="question-block">
+                        <div class="q-text">1. To what extent do you feel you understand the philosophy and main goals
+                            of the PYP?</div>
+                        <div class="likert-scale">
+                            <label class="likert-option"><input type="radio" name="ib_q1" value="1" required><span>1 -
+                                    <small>Never</small></span></label>
+                            <label class="likert-option"><input type="radio" name="ib_q1"
+                                    value="2"><span>2</span></label>
+                            <label class="likert-option"><input type="radio" name="ib_q1"
+                                    value="3"><span>3</span></label>
+                            <label class="likert-option"><input type="radio" name="ib_q1"
+                                    value="4"><span>4</span></label>
+                            <label class="likert-option"><input type="radio" name="ib_q1" value="5"><span>5 -
+                                    <small>Always</small></span></label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="q-text">2. When planning your units, how often do you use inquiry-based learning as
+                            a main approach?</div>
+                        <div class="likert-scale">
+                            <label class="likert-option"><input type="radio" name="ib_q2" value="1" required><span>1 -
+                                    <small>Never</small></span></label>
+                            <label class="likert-option"><input type="radio" name="ib_q2"
+                                    value="2"><span>2</span></label>
+                            <label class="likert-option"><input type="radio" name="ib_q2"
+                                    value="3"><span>3</span></label>
+                            <label class="likert-option"><input type="radio" name="ib_q2"
+                                    value="4"><span>4</span></label>
+                            <label class="likert-option"><input type="radio" name="ib_q2" value="5"><span>5 -
+                                    <small>Always</small></span></label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="q-text">3. Which of the following best describes the teacher's role in a PYP
+                            classroom?</div>
+                        <div class="mcq-options">
+                            <label class="mcq-option">
+                                <input type="radio" name="ib_q3" value="wrong" required>
+                                <div class="mcq-text">A) Sole content deliverer</div>
+                            </label>
+                            <label class="mcq-option">
+                                <input type="radio" name="ib_q3" value="correct">
+                                <div class="mcq-text">B) Facilitator who supports students' questions and inquiries
+                                </div>
+                            </label>
+                            <label class="mcq-option">
+                                <input type="radio" name="ib_q3" value="wrong">
+                                <div class="mcq-text">C) Solely a behavior observer</div>
+                            </label>
+                            <label class="mcq-option">
+                                <input type="radio" name="ib_q3" value="wrong">
+                                <div class="mcq-text">D) Grader only</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Story-based Learning -->
+                <div class="form-section">
+                    <h3 class="section-title"><i class="fas fa-book-open"></i> <span>Section 2: Story-Based
+                            Learning</span></h3>
+
+                    <div class="question-block">
+                        <div class="q-text">4. How often do you use a story as a starting point for a lesson in any
+                            subject during the month?</div>
+                        <div class="likert-scale">
+                            <label class="likert-option"><input type="radio" name="story_q1" value="1" required><span>1
+                                    - <small>Never</small></span></label>
+                            <label class="likert-option"><input type="radio" name="story_q1"
+                                    value="2"><span>2</span></label>
+                            <label class="likert-option"><input type="radio" name="story_q1"
+                                    value="3"><span>3</span></label>
+                            <label class="likert-option"><input type="radio" name="story_q1"
+                                    value="4"><span>4</span></label>
+                            <label class="likert-option"><input type="radio" name="story_q1" value="5"><span>5 -
+                                    <small>Always</small></span></label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="q-text">5. When reading a story with students, to what extent do you explicitly plan
+                            'before, during, and after' reading questions?</div>
+                        <div class="likert-scale">
+                            <label class="likert-option"><input type="radio" name="story_q2" value="1" required><span>1
+                                    - <small>Never</small></span></label>
+                            <label class="likert-option"><input type="radio" name="story_q2"
+                                    value="2"><span>2</span></label>
+                            <label class="likert-option"><input type="radio" name="story_q2"
+                                    value="3"><span>3</span></label>
+                            <label class="likert-option"><input type="radio" name="story_q2"
+                                    value="4"><span>4</span></label>
+                            <label class="likert-option"><input type="radio" name="story_q2" value="5"><span>5 -
+                                    <small>Always</small></span></label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="q-text">6. Story-based learning primarily helps students to:</div>
+                        <div class="mcq-options">
+                            <label class="mcq-option">
+                                <input type="radio" name="story_q3" value="wrong" required>
+                                <div class="mcq-text">A) Memorize text</div>
+                            </label>
+                            <label class="mcq-option">
+                                <input type="radio" name="story_q3" value="correct">
+                                <div class="mcq-text">B) Build comprehension, language, and values in a rich context
+                                </div>
+                            </label>
+                            <label class="mcq-option">
+                                <input type="radio" name="story_q3" value="wrong">
+                                <div class="mcq-text">C) Fill class time</div>
+                            </label>
+                            <label class="mcq-option">
+                                <input type="radio" name="story_q3" value="wrong">
+                                <div class="mcq-text">D) Practice reading aloud only</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Classroom Management -->
+                <div class="form-section">
+                    <h3 class="section-title"><i class="fas fa-users-cog"></i> <span>Section 3: Positive Classroom
+                            Management</span></h3>
+
+                    <div class="question-block">
+                        <div class="q-text">7. To what extent do you feel you have a clear classroom management plan
+                            (rules, routines, reinforcement, response)?</div>
+                        <div class="likert-scale">
+                            <label class="likert-option"><input type="radio" name="class_q1" value="1" required><span>1
+                                    - <small>Never</small></span></label>
+                            <label class="likert-option"><input type="radio" name="class_q1"
+                                    value="2"><span>2</span></label>
+                            <label class="likert-option"><input type="radio" name="class_q1"
+                                    value="3"><span>3</span></label>
+                            <label class="likert-option"><input type="radio" name="class_q1"
+                                    value="4"><span>4</span></label>
+                            <label class="likert-option"><input type="radio" name="class_q1" value="5"><span>5 -
+                                    <small>Always</small></span></label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="q-text">8. When inappropriate behavior occurs, how often do you start with a
+                            positive reminder of the rules before escalating?</div>
+                        <div class="likert-scale">
+                            <label class="likert-option"><input type="radio" name="class_q2" value="1" required><span>1
+                                    - <small>Never</small></span></label>
+                            <label class="likert-option"><input type="radio" name="class_q2"
+                                    value="2"><span>2</span></label>
+                            <label class="likert-option"><input type="radio" name="class_q2"
+                                    value="3"><span>3</span></label>
+                            <label class="likert-option"><input type="radio" name="class_q2"
+                                    value="4"><span>4</span></label>
+                            <label class="likert-option"><input type="radio" name="class_q2" value="5"><span>5 -
+                                    <small>Always</small></span></label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="q-text">9. Which of the following is closest to positive classroom management?</div>
+                        <div class="mcq-options">
+                            <label class="mcq-option">
+                                <input type="radio" name="class_q3" value="wrong" required>
+                                <div class="mcq-text">A) Yelling to silence students</div>
+                            </label>
+                            <label class="mcq-option">
+                                <input type="radio" name="class_q3" value="correct">
+                                <div class="mcq-text">B) Agreeing on rules proactively and reviewing them positively
+                                </div>
+                            </label>
+                            <label class="mcq-option">
+                                <input type="radio" name="class_q3" value="wrong">
+                                <div class="mcq-text">C) Sending students directly to administration</div>
+                            </label>
+                            <label class="mcq-option">
+                                <input type="radio" name="class_q3" value="wrong">
+                                <div class="mcq-text">D) Ignoring all behaviors</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button type="submit" class="btn btn-primary" style="font-size: 1.3rem; padding: 15px 40px;">Submit
+                        Assessment</button>
+                </div>
+            </form>
+
+            <!-- Results Output -->
+            <div id="resultBox">
+                <h3>Assessment Results</h3>
+                <p id="resultMsg" style="margin-bottom: 20px;"></p>
+
+                <div class="total-score">
+                    <span>Final Score:</span> <span id="finalScoreVal">0</span>%
+                </div>
+
+                <div class="score-display">
+                    <div class="score-item">
+                        <h4>IB/PYP</h4>
+                        <div class="grade" id="score_ib">0%</div>
+                    </div>
+                    <div class="score-item">
+                        <h4>Story-Based</h4>
+                        <div class="grade" id="score_story">0%</div>
+                    </div>
+                    <div class="score-item">
+                        <h4>Classroom Mgmt</h4>
+                        <div class="grade" id="score_class">0%</div>
+                    </div>
+                </div>
+
+                <div class="cert-btn-container" id="certBtnContainer" style="display: none;">
+                    <p style="color:var(--color-primary-dark); font-weight:bold; margin-bottom: 15px;">Congratulations!
+                        You passed with excellence. You can now download your certificate.</p>
+                    <button id="downloadCertBtn" class="btn btn-secondary"
+                        style="font-size: 1.2rem; background: var(--color-primary); color: white;"><i
+                            class="fas fa-file-pdf"></i> Download Certificate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Certificate Template -->
+    <div id="certWrapper">
+        <div id="certificateTemplate">
+            <div class="cert-logo">Tafreed</div>
+            <div class="cert-title-en">Certificate of Excellence in Educational Competencies</div>
+
+            <div class="cert-body-en">
+                <span>Tafreed Platform for Professional Development certifies that</span><br>
+                <strong style="color:var(--color-primary-dark); font-size: 2rem; display:block; margin: 15px 0;"
+                    id="certNameEn"></strong>
+                <span>has completed the Teacher Competency Assessment, achieving a high level of understanding in IB
+                    PYP, Story-Based Learning, and Positive Classroom Management.</span>
+            </div>
+
+            <div class="cert-footer">
+                <div class="signature-box" style="text-align: left;">
+                    <div style="font-weight:bold;">'Tafreed' Project</div>
+                    <div>For Teachers Professional Development</div>
+                </div>
+                <div class="signature-box">
+                    <div class="signature-line" id="certDate"></div>
+                    <div class="signature-text">Date of Issue</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('assessmentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+            const tName = formData.get('teacherName');
+
+            function convertLikert(val) {
+                return (parseInt(val) - 1) * 25;
+            }
+
+            // IB Section
+            const ib_l1 = convertLikert(formData.get('ib_q1'));
+            const ib_l2 = convertLikert(formData.get('ib_q2'));
+            const ib_mcq = formData.get('ib_q3') === 'correct' ? 100 : 0;
+            const scoreIB = Math.round((ib_l1 + ib_l2 + ib_mcq) / 3);
+
+            // Story Section
+            const st_l1 = convertLikert(formData.get('story_q1'));
+            const st_l2 = convertLikert(formData.get('story_q2'));
+            const st_mcq = formData.get('story_q3') === 'correct' ? 100 : 0;
+            const scoreStory = Math.round((st_l1 + st_l2 + st_mcq) / 3);
+
+            // Classroom Section
+            const cl_l1 = convertLikert(formData.get('class_q1'));
+            const cl_l2 = convertLikert(formData.get('class_q2'));
+            const cl_mcq = formData.get('class_q3') === 'correct' ? 100 : 0;
+            const scoreClassroom = Math.round((cl_l1 + cl_l2 + cl_mcq) / 3);
+
+            // Total Average
+            const averageScore = Math.round((scoreIB + scoreStory + scoreClassroom) / 3);
+
+            function getLevel(score) {
+                if (score < 50) return "Beginner";
+                if (score < 80) return "Intermediate";
+                return "Advanced";
+            }
+
+            // Display Results
+            document.getElementById('resultBox').style.display = 'block';
+            document.getElementById('finalScoreVal').textContent = averageScore;
+
+            document.getElementById('score_ib').textContent = scoreIB + "% - " + getLevel(scoreIB);
+            document.getElementById('score_story').textContent = scoreStory + "% - " + getLevel(scoreStory);
+            document.getElementById('score_class').textContent = scoreClassroom + "% - " + getLevel(scoreClassroom);
+
+            const resultMsg = document.getElementById('resultMsg');
+            const certBtnContainer = document.getElementById('certBtnContainer');
+
+            if (averageScore >= 80) {
+                const msgEn = `Great job, <strong>${tName}</strong>! Your performance is excellent and your practices reflect a deep understanding of modern learning.`;
+                resultMsg.innerHTML = msgEn;
+                certBtnContainer.style.display = 'block';
+
+                document.getElementById('certNameEn').textContent = tName;
+                const today = new Date();
+                document.getElementById('certDate').textContent = today.toLocaleDateString();
+
+            } else {
+                let sectionNeedsHelp = scoreIB < 50 ? "IB PYP" : (scoreClassroom < 50 ? "Classroom Management" : "Story-Based Learning");
+                const msgEn = `Thank you, <strong>${tName}</strong>. We recommend taking a deeper look at the '${sectionNeedsHelp}' section to raise your competencies to an excellent level. Keep growing!`;
+                resultMsg.innerHTML = msgEn;
+                certBtnContainer.style.display = 'none';
+            }
+
+            // Smooth scroll to results
+            document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Generate PDF
+        document.getElementById('downloadCertBtn').addEventListener('click', function () {
+            const certElement = document.getElementById('certificateTemplate');
+            document.getElementById('certWrapper').style.display = 'block';
+            document.getElementById('certWrapper').style.position = 'absolute';
+            document.getElementById('certWrapper').style.left = '-9999px';
+
+            const opt = {
+                margin: 0,
+                filename: 'Tafreed_Certificate.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'px', format: [800, 600], orientation: 'landscape' }
+            };
+
+            html2pdf().set(opt).from(certElement).save().then(() => {
+                document.getElementById('certWrapper').style.display = 'none';
+            });
+        });
+
+    </script>
+</body>
+
+</html>

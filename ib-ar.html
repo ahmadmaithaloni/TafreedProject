@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفريد | البكالوريا الدولية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-header { background-color: var(--color-primary-light); padding: 80px 0 40px; text-align: center; }
+        .page-header h1 { font-size: 2.8rem; color: var(--color-primary-dark); margin-bottom: 15px; }
+        .bilingual-intro { max-width: 800px; margin: 0 auto; font-size: 1.15rem; color: var(--color-text); }
+        .content-section { padding: 60px 0; }
+        .content-section:nth-child(even) { background-color: var(--color-white); }
+        .content-section:nth-child(odd) { background-color: var(--color-bg); }
+        .section-title { color: var(--color-primary-dark); margin-bottom: 10px; font-size: 2rem; }
+        .text-block p { font-size: 1.1rem; margin-bottom: 15px; line-height: 1.8; }
+        .list-block li { font-size: 1.1rem; margin-bottom: 10px; position: relative; padding-inline-start: 25px; }
+        .list-block li::before { content: "•"; color: var(--color-primary); font-weight: bold; position: absolute; left: 0; top: 0; }
+        [dir="rtl"] .list-block li::before { right: 0; left: auto; }
+        .example-box { background: rgba(200, 162, 200, 0.1); border-right: 4px solid var(--color-primary); padding: 20px; border-radius: 8px; margin-top: 20px; font-weight: 600; }
+        [dir="ltr"] .example-box { border-right: none; border-left: 4px solid var(--color-primary); }
+        .two-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .role-card { background: var(--color-white); padding: 35px; border-radius: var(--border-radius); box-shadow: var(--shadow); border-top: 4px solid var(--color-primary); }
+        .role-card h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--color-primary-dark); }
+        .resource-list { display: flex; flex-direction: column; gap: 20px; }
+        .resource-item { background: var(--color-white); padding: 20px; border-radius: var(--border-radius); box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: flex; justify-content: space-between; align-items: center; }
+        .resource-info h4 { font-size: 1.25rem; color: var(--color-text); margin-bottom: 5px; }
+        @media (max-width: 768px) {
+            .two-columns { grid-template-columns: 1fr; }
+            .resource-item { flex-direction: column; align-items: flex-start; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index-ar.html" class="logo">تفريد</a>
+            <ul class="nav-links">
+                <li><a href="index-ar.html">الرئيسية</a></li>
+                <li><a href="ib-ar.html" style="color: var(--color-primary-dark)">البكالوريا الدولية</a></li>
+                <li><a href="story-ar.html">التعلم بالقصة</a></li>
+                <li><a href="classroom-ar.html">الإدارة الصفية</a></li>
+                <li><a href="assessment-ar.html" class="btn btn-outline">الاستبيان</a></li>
+                <li><a href="ib-en.html" class="lang-btn" style="text-decoration:none; padding: 5px 10px; display:inline-block;">EN</a></li>
+            </ul>
+            <div class="burger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>ما هو برنامج البكالوريا الدولية (IB)؟</h1>
+            <p class="bilingual-intro">هذه الصفحة موجهة خصيصاً لك كمعلم لفهم فلسفة البكالوريا الدولية، وتحديداً برنامج السنوات الابتدائية (PYP)، وكيف يمكنك تطبيق هذه المبادئ ضمن رحلتك التطورية في منصة 'تفريد'.</p>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">نظرة عامة على الـ IB</h2>
+            <div class="text-block">
+                <p>البكالوريا الدولية هي إطار تعليمي عالمي يضع المتعلم كفرد متكامل (معرفياً، اجتماعياً، وعاطفياً) في جوهر العملية التعليمية. رغم تعدد برامجها، نركز في 'تفريد' حالياً على برنامج السنوات الابتدائية لبناء أساس قوي لثقافة الاستقصاء.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">برنامج السنوات الابتدائية (PYP)</h2>
+            <ul class="list-block">
+                <li>مخصص للفئة العمرية من 3 إلى 12 سنة.</li>
+                <li>يقوم على 'وحدات استقصائية' مرتبطة بمواضيع عابرة للمواد.</li>
+                <li>يعزز دور المتعلم كـ 'باحث صغير' وفاعل رئيسي، وليس مجرد متلقٍ سلبي للمعلومة.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">ما هو التعلم القائم على الاستقصاء؟</h2>
+            <div class="text-block">
+                <p>الاستقصاء هو أن تنطلق عملية التعلم من تساؤلات الطلبة وفضولهم الطبيعي. يصمم المعلم بيئة تحفز البحث، التجريب، المناقشة، والتأمل العميق، لتصبح مهارات البحث أسلوب حياة للمتعلم.</p>
+                <div class="example-box">
+                    <i class="fas fa-lightbulb" style="color:var(--color-primary); margin-inline-end: 10px;"></i>
+                    <span>مثال عملي: نشاط يبدأ بطرح الطلاب أسئلتهم حول تغير المناخ، ثم يقومون بتجارب وبناء نماذج للإجابة على تساؤلاتهم بأنفسهم.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">دور المعلم ودور الطالب</h2>
+            <div class="two-columns">
+                <div class="role-card">
+                    <div style="font-size: 2rem; color: var(--color-primary); margin-bottom: 15px;"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h3>دور المعلم كـ (مُيسِّر)</h3>
+                    <ul class="list-block">
+                        <li>ميسّر للتعلم وموجه، وليس المصدر الوحيد للمعرفة.</li>
+                        <li>يصمم وحدات ومواقف استقصائية تثير التفكير.</li>
+                        <li>لا يقدم الإجابات جاهزة، بل يطرح أسئلة تقود للاكتشاف.</li>
+                    </ul>
+                </div>
+                <div class="role-card">
+                    <div style="font-size: 2rem; color: var(--color-secondary); margin-bottom: 15px;"><i class="fas fa-user-graduate"></i></div>
+                    <h3>دور الطالب كـ (باحث)</h3>
+                    <ul class="list-block">
+                        <li>باحث نشط ومليء بالفضول العلمي.</li>
+                        <li>يطرح الأسئلة ويشارك في اختيار طرق التعلم.</li>
+                        <li>يجرّب، يخطئ ويتعلم من أخطائه بثقة.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">كيف يدعم IB مشروع 'تفريد'؟</h2>
+            <div class="text-block">
+                <p>يهدف 'تفريد' إلى تمكين المعلمين من هندسة مسارهم المهني كما يصممون تعلم طلابهم. تتوافق فلسفة الاستقصاء في PYP مع مفهوم التطوير الفردي للمتدربين: فلكل معلم نقطة انطلاق فريدة ورحلة تنبع من فضوله ورغباته المهنية.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background-color: var(--color-white);">
+        <div class="container">
+            <h2 class="section-title">مصادر إضافية حول PYP</h2>
+            <div class="resource-list">
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>موقع IB الرسمي</h4>
+                        <p style="color: var(--color-text-light)">نظرة عامة وشاملة لبرنامج السنوات الابتدائية من المنظمة الأم.</p>
+                    </div>
+                    <a href="https://ibo.org/programmes/primary-years-programme" target="_blank" class="btn btn-primary">زيارة الموقع</a>
+                </div>
+                <div class="resource-item">
+                    <div class="resource-info">
+                        <h4>موقع إلهام الاستقصاء</h4>
+                        <p style="color: var(--color-text-light)">موقع يقدم أفكاراً عملية واستراتيجيات مجربة لتعزيز ثقافة الاستقصاء في الغرفة الصفية.</p>
+                    </div>
+                    <a href="#" target="_blank" class="btn btn-primary">زيارة الموقع</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 تفريد. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

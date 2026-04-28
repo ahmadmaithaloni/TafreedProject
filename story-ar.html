@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفريد | التعلم بالقصة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-header { background-color: var(--color-primary-light); padding: 80px 0 40px; text-align: center; }
+        .page-header h1 { font-size: 2.8rem; color: var(--color-primary-dark); margin-bottom: 15px; }
+        .bilingual-intro { max-width: 800px; margin: 0 auto; font-size: 1.15rem; color: var(--color-text); }
+        .content-section { padding: 60px 0; }
+        .content-section:nth-child(even) { background-color: var(--color-white); }
+        .content-section:nth-child(odd) { background-color: var(--color-bg); }
+        .section-title { color: var(--color-primary-dark); margin-bottom: 10px; font-size: 2rem; }
+        .text-block p { font-size: 1.1rem; margin-bottom: 15px; line-height: 1.8; }
+        .list-block li { font-size: 1.1rem; margin-bottom: 10px; position: relative; padding-inline-start: 25px; }
+        .list-block li::before { content: "•"; color: var(--color-primary); font-weight: bold; position: absolute; left: 0; top: 0; }
+        [dir="rtl"] .list-block li::before { right: 0; left: auto; }
+        .three-columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+        .phase-card { background: var(--color-white); padding: 30px; border-radius: 12px; box-shadow: var(--shadow); text-align: center; position: relative; transition: var(--transition); border-bottom: 4px solid var(--color-secondary); }
+        .phase-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .phase-icon { font-size: 2.5rem; color: var(--color-secondary); margin-bottom: 20px; }
+        .phase-card h3 { color: var(--color-primary-dark); margin-bottom: 15px; font-size: 1.4rem; }
+        .phase-card p { font-size: 1.05rem; line-height: 1.6; color: var(--color-text); }
+        .activity-item { background: var(--color-white); padding: 25px; border-radius: 8px; margin-bottom: 20px; border-right: 4px solid var(--color-primary); display: flex; align-items: flex-start; gap: 20px; box-shadow: var(--shadow); }
+        [dir="ltr"] .activity-item { border-right: none; border-left: 4px solid var(--color-primary); }
+        .activity-icon { font-size: 1.8rem; color: var(--color-primary); background: var(--color-primary-light); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .activity-content h4 { font-size: 1.25rem; color: var(--color-primary-dark); margin-bottom: 10px; }
+        .activity-content p { font-size: 1.05rem; color: var(--color-text); line-height: 1.6; }
+        .resource-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .resource-item { background: var(--color-white); padding: 25px; border-radius: var(--border-radius); box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: var(--transition); }
+        .resource-item:hover { box-shadow: var(--shadow); }
+        .resource-item h4 { font-size: 1.25rem; color: var(--color-primary-dark); margin-bottom: 10px; }
+        @media (max-width: 992px) { .three-columns { grid-template-columns: 1fr; } .resource-list { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .activity-item { flex-direction: column; align-items: center; text-align: center; } }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index-ar.html" class="logo">تفريد</a>
+            <ul class="nav-links">
+                <li><a href="index-ar.html">الرئيسية</a></li>
+                <li><a href="ib-ar.html">البكالوريا الدولية</a></li>
+                <li><a href="story-ar.html" style="color: var(--color-primary-dark)">التعلم بالقصة</a></li>
+                <li><a href="classroom-ar.html">الإدارة الصفية</a></li>
+                <li><a href="assessment-ar.html" class="btn btn-outline">الاستبيان</a></li>
+                <li><a href="story-en.html" class="lang-btn" style="text-decoration:none; padding: 5px 10px; display:inline-block;">EN</a></li>
+            </ul>
+            <div class="burger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>التعلم من خلال القصة</h1>
+            <p class="bilingual-intro">هذه الصفحة موجّهة لمعلمي 'تفريد' لفهم كيف تتحول القصص العادية إلى بوابة سحرية للتعلّم المفاهيمي، اللغوي، والقيمي في بيئة البكالوريا الدولية.</p>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">ما هو التعلّم من خلال القصة؟</h2>
+            <div class="text-block">
+                <p>القصة ليست فقط نصًا مستقلاً للقراءة، بل هي موقف تعلّمي كامل يحمل شخصيات، ومشكلة، وسياقاً يفيض بالمشاعر. يستخدم المعلم القصة كمنطلق لإثارة الأسئلة، وربط المفاهيم المجردة، وبناء المعنى بشكل تشاركي مع الطلبة.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">لماذا نعلّم من خلال القصة؟</h2>
+            <ul class="list-block" style="margin-top: 20px;">
+                <li>تعزيز الفهم القرائي والطلاقة اللغوية في سياق محبب.</li>
+                <li>بناء مستويات عليا من التعاطف، وفهم وجهات النظر المختلفة بوضوح.</li>
+                <li>ربط المفاهيم العلمية أو الاجتماعية الشائكة بسياقات حياتية يمكن تخيلها.</li>
+                <li>دعم الطلبة متعلمي اللغة عبر توفير سياق بصري ولغوي غني يحمل معنى.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-section" style="background-color: var(--color-bg);">
+        <div class="container">
+            <div style="text-align: center;">
+                <h2 class="section-title">نموذج درس قائم على قصة</h2>
+            </div>
+            
+            <div class="three-columns">
+                <div class="phase-card">
+                    <div class="phase-icon"><i class="fas fa-eye"></i></div>
+                    <h3>قبل القراءة</h3>
+                    <p>تفعيل المعرفة السابقة، التنبؤ بالأحداث من خلال استكشاف الغلاف أو العنوان، ومناقشة الكلمات المفتاحية الأساسية للقصة.</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-icon"><i class="fas fa-comments"></i></div>
+                    <h3>أثناء القراءة</h3>
+                    <p>طرح أسئلة تفكير مفتوحة، التوقف المتعمّد عند نقاط تحول معيّنة لبناء التوقعات، وملاحظة تطور مشاعر الشخصيات باستمرار.</p>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-icon"><i class="fas fa-pencil-alt"></i></div>
+                    <h3>بعد القراءة</h3>
+                    <p>تنفيذ نشاط كتابة إبداعي قصير، رسم وتجسيد مشهد مفضل، أو تمثيل موقف يعمق ربط القصة بحياة الطلبة أو بوحدة الاستقصاء (UOI).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">كيف يدعم الذكاء الاصطناعي هذا النهج؟</h2>
+            <div class="text-block" style="margin-bottom: 30px;">
+                <p>يمكن للذكاء الاصطناعي أن يخلق تجارب غامرة لدعم التعلم، مثل إنشاء مقاطع فيديو مرئية تلخص القصة، أو توليد أسئلة تفكير عليا مخصصة، أو مساعدة الطلبة في صياغة حبكات ونهايات بديلة للمقارنة والنقاش حولها.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">أفكار سريعة للأنشطة الثريّة</h2>
+            
+            <div style="margin-top: 30px;">
+                <div class="activity-item">
+                    <div class="activity-icon"><i class="fas fa-chair"></i></div>
+                    <div class="activity-content">
+                        <h4>مقعد الشخصية</h4>
+                        <p>يختار طالب شخصية من القصة ويجيب عن أسئلة زملائه متقمصاً دورها ومشاعرها.</p>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon"><i class="fas fa-envelope-open-text"></i></div>
+                    <div class="activity-content">
+                        <h4>رسالة إلى البطل</h4>
+                        <p>يكتب الطلبة رسالة تفيض بالنصائح لشخصية رئيسية تواجه تحدياً ما.</p>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon"><i class="fas fa-random"></i></div>
+                    <div class="activity-content">
+                        <h4>غيّر النهاية</h4>
+                        <p>يقترح الطلبة نهاية مختلفة للقصة بناءً على تغيير قرار صغير اتخاذته الشخصية المرجعية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background-color: var(--color-white);">
+        <div class="container">
+            <h2 class="section-title">مصادر ومراجع للتعلّم بالقصة</h2>
+
+            <div class="resource-list" style="margin-top: 30px;">
+                <div class="resource-item">
+                    <h4>التدوين التربوي</h4>
+                    <p style="color: var(--color-text-light)">مقالات علمية حول أثر توظيف السرديات والقصص في صفوف المرحلة الابتدائية.</p>
+                </div>
+                <div class="resource-item">
+                    <h4>تطبيقات القصص</h4>
+                    <p style="color: var(--color-text-light)">كتب مقترحة تستعرض تطبيقات عملية لاستخدام الحكايات في الغرفة الصفية بفاعلية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 تفريد. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
